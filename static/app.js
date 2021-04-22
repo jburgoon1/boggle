@@ -3,11 +3,11 @@ const $button = $('#submit')
 const $form = $('#guess-form')
 const base_url = 'http://127.0.0.1:5000/'
 
-function post_word(e){
-  e.stopImmediatePropagation();
-  $.ajax({
-    url: 'app.py',
-    type: 'POST',
+async function post_word(e){
+  e.preventDefault();
+  axios ({
+    url: 'boggle.py',
+    method: 'POST',
    data:{
      words: JSON.stringify($input)
    }
@@ -15,3 +15,7 @@ function post_word(e){
 }
 
 $form.on('submit', post_word)
+const answers = JSON.parse(results)
+for (let answer of answers){
+  console.log(answer)
+}
