@@ -1,15 +1,19 @@
 {%extends 'base.html'%}
 {%block title%}Boggle{%endblock%}
 {%block content%}
+<h3>Score:{{count}}</h3>
+<div id = "time"></div>
 {%for list in board%}
 <h2>{{list}}</h2>
 {%endfor%}
-{%for answer in result%}
-<h1>answer</h1>
-{%endfor%}
+
+
+
+
 <form action="/answer" id = 'guess-form' method="POST">
 <label for="guess">Enter your guess!</label>
 <input type="text" name="guess" id="guess">
 <button id = 'submit'>Sumbit</button>
 </form>
+<h2>{{result}}</h2>
 {%endblock%}

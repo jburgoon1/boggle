@@ -1,21 +1,25 @@
-const $input = $('#guess').val()
-const $button = $('#submit')
-const $form = $('#guess-form')
-const base_url = 'http://127.0.0.1:5000/'
-
-async function post_word(e){
+$(function(){
+const inputGuess = $("#guess").val();
+const $button = $('#submit');
+const $form = $('#guess-form');
+const base_url = 'http://127.0.0.1:5000/';
+const $score = $('#score')
+$form.on('submit', async function (e){
   e.preventDefault();
-  axios ({
-    url: 'boggle.py',
+  
+  await axios ({
+    url: base_url + 'answer',
     method: 'POST',
+    
    data:{
-     words: JSON.stringify($input)
+     guess: inputGuess
    }
-  })
-}
-
-$form.on('submit', post_word)
-const answers = JSON.parse(results)
-for (let answer of answers){
-  console.log(answer)
-}
+  });
+});
+})
+let timer = 60
+setInterval(function(){
+  timer -= 1
+  console.log(time)
+},1000)
+$('#time').append('<p>timer</p>')
