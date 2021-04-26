@@ -7,4 +7,11 @@ from boggle import Boggle
 class FlaskTests(TestCase):
 
     # TODO -- write tests for every view function / feature!
-
+    def test_home(self):
+        with app.test_client() as client:
+            response = client.get('home.html')
+            self.assertEqual(response.status_code, 200)
+    def test_game(self):
+        with app.test_client() as client:
+            response = client.get('game.html')
+            self.assertEqual(response.status_code, 200)
